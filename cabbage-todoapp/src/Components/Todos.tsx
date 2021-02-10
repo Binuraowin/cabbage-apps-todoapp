@@ -1,7 +1,8 @@
 import { Row } from "./row/Row"
 import { data } from "../todos"
-import { useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { AddTodo } from "./addTodo/AddTodo"
+import { v4 as uuidv4 } from "uuid"
 
 type Todo ={
     id: string
@@ -12,6 +13,28 @@ type Todo ={
 export const Todos = () =>{
     const [todos, setTodos] = useState<Todo[]>(data)
     const [task, setTask] = useState("")
+
+    const handleAddTodo = (todo: Todo) => {
+        const updatedTodos = [...todos, todo]
+        setTodos(updatedTodos)
+        setTask("")
+      }
+
+    const handleChange = (e: ChangeEvent) => {
+        const { value } = e.target as HTMLInputElement
+        setTask(value)
+      }
+
+      const handleSubmitTodo = (e: FormEvent) => {
+        e.preventDefault()
+    
+        const todo = {
+          id: uuidv4(),
+          task: task,
+          isCompleted: false,
+        }
+        task && handleAddTodo(todo)
+      }
     
 
     const handleDeleteTodo = (id: string) => {
@@ -34,7 +57,11 @@ export const Todos = () =>{
 
     return (
         <section>
-            <AddTodo task={task}/>
+             <AddTodo
+        handleChange={handleChange}
+        handleSubmitTodo={handleSubmitTodo}
+        task={task}
+      />
             {todos.map((todo) => (
                 <Row key={todo.id}  todo={todo} handleDeleteTodo={handleDeleteTodo} handleCheckTodo={handleCheckTodo}/>
             ))}
