@@ -21,7 +21,7 @@ export const Row = ({
     <div
       className={`
           flex w-full p-4 mb-2 justify-between items-center
-         ${isCompleted ? "bg-red-400 " : "bg-green-300"}
+         ${isCompleted ? "bg-red-400 " : "bg-blue-300"}
         `}
     >
       <p
