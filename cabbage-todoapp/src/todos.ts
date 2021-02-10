@@ -2,7 +2,7 @@ export const data = [
     {
       id: "0",
       title: "Task 1",
-      task: "Tak 1",
+      task: "Task 1",
       isCompleted: false,
     },
     {
