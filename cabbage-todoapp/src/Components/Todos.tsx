@@ -1,6 +1,7 @@
 import { Row } from "./row/Row"
 import { data } from "../todos"
 import { useState } from "react"
+import { AddTodo } from "./addTodo/AddTodo"
 
 type Todo ={
     id: string
@@ -10,6 +11,8 @@ type Todo ={
 
 export const Todos = () =>{
     const [todos, setTodos] = useState<Todo[]>(data)
+    const [task, setTask] = useState("")
+    
 
     const handleDeleteTodo = (id: string) => {
         const updatedTodos = todos.filter((todo) => todo.id !== id)
@@ -31,6 +34,7 @@ export const Todos = () =>{
 
     return (
         <section>
+            <AddTodo task={task}/>
             {todos.map((todo) => (
                 <Row key={todo.id}  todo={todo} handleDeleteTodo={handleDeleteTodo} handleCheckTodo={handleCheckTodo}/>
             ))}
