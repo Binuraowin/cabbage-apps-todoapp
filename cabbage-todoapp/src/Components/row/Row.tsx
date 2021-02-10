@@ -10,10 +10,11 @@ type Todo ={
 type TodoProps = {
     todo:Todo
     handleDeleteTodo: (id: string) => void
+    handleCheckTodo: (id: string) => void
 }
 
 export const Row = ({
-    todo: { task, isCompleted,id},handleDeleteTodo
+    todo: { task, isCompleted,id},handleDeleteTodo,handleCheckTodo
   }: TodoProps) => (
     <div >
       <p >
@@ -26,7 +27,7 @@ export const Row = ({
         <input
           type="checkbox"
           checked={isCompleted}
-          onChange={() => null}/>
+          onChange={() => handleCheckTodo(id)}/>
       </div>
     </div>
   )
