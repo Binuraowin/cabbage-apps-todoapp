@@ -23,8 +23,8 @@ handleSubmitTodo,
       className="flex-1 rounded shadow p-2 text-grey-dark mr-2"
       onChange={handleChange}
     />
-    <Button onClick={handleSubmitTodo} type={"default"} aria-label="Add todo">
-        <SendOutlined   className="shadow-sm border-none h-10 w-7 flex h-7 w-7 flex justify-center items-center"/>
+    <Button onClick={handleSubmitTodo} type={"default"} className="shadow-sm border-none h-15 w-12 flex justify-center items-center" aria-label="Add todo">
+        <SendOutlined   className="shadow-sm border-none h-5 w-5"/>
     </Button>
   </form>
 )
