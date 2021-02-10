@@ -9,17 +9,18 @@ type Todo ={
 
 type TodoProps = {
     todo:Todo
+    handleDeleteTodo: (id: string) => void
 }
 
 export const Row = ({
-    todo: { task, isCompleted }
+    todo: { task, isCompleted,id},handleDeleteTodo
   }: TodoProps) => (
     <div >
       <p >
         {task}
       </p>
-      <div className="w-1/6 flex justify-between items-center mr-2">
-        <button>
+      <div>
+        <button  onClick={() => handleDeleteTodo(id)}>
             <DeleteOutlined />
         </button>
         <input
